@@ -1,64 +1,32 @@
 import React from 'react';
-import { Users, TrendingUp, Award, Star } from 'lucide-react';
+import { Users, Star } from 'lucide-react';
 
 const Clients: React.FC = () => {
   const clients = [
     {
-      name: 'TechScope',
-      category: 'Technology Review',
-      subscribers: '2.5M',
+      name: 'Think School',
+      subscribers: '4.68M',
       platform: 'YouTube',
-      logo: 'TS'
+      logo: 'src/assets/thinkschool.jpg'
     },
     {
-      name: 'StyleNova',
-      category: 'Fashion Brand',
-      subscribers: '850K',
+      name: 'Ashok Aggarwal',
+      subscribers: '436K',
       platform: 'Instagram',
-      logo: 'SN'
+      logo: 'src/assets/ashokaggarwal.jpg'
     },
     {
-      name: 'ChefMaster',
-      category: 'Cooking Channel',
-      subscribers: '1.8M',
-      platform: 'TikTok',
-      logo: 'CM'
+      name: 'Zahabi',
+      subscribers: null,
+      platform: 'Brand',
+      logo: 'src/assets/zahabi.jpg'
     },
     {
-      name: 'FitLife',
-      category: 'Fitness & Wellness',
-      subscribers: '3.2M',
+      name: 'Unending Education',
+      subscribers: '498K',
       platform: 'YouTube',
-      logo: 'FL'
+      logo: 'src/assets/unendingeducation.jpg'
     },
-    {
-      name: 'InnovateCorp',
-      category: 'Corporate',
-      subscribers: '150K',
-      platform: 'LinkedIn',
-      logo: 'IC'
-    },
-    {
-      name: 'LaunchPad',
-      category: 'Startup',
-      subscribers: '420K',
-      platform: 'YouTube',
-      logo: 'LP'
-    },
-    {
-      name: 'GameZone',
-      category: 'Gaming',
-      subscribers: '5.1M',
-      platform: 'YouTube',
-      logo: 'GZ'
-    },
-    {
-      name: 'EcoVibe',
-      category: 'Lifestyle',
-      subscribers: '680K',
-      platform: 'Instagram',
-      logo: 'EV'
-    }
   ];
 
   // const achievements = [
@@ -89,7 +57,7 @@ const Clients: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Trusted by Leading Creators
+            Our Clients
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             We're proud to work with some of the most successful content creators and brands across different platforms.
@@ -102,17 +70,16 @@ const Clients: React.FC = () => {
             <div key={index} className="bg-black border border-white/[0.08] rounded-lg p-6 hover:border-white/20 transition-all duration-300 transform hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
               {/* Logo */}
               <div className="w-16 h-16 bg-white rounded-md flex items-center justify-center mb-4 mx-auto">
-                <span className="text-black font-bold text-xl">{client.logo}</span>
+                <img src={client.logo} alt={client.name} />
               </div>
               
               {/* Client Info */}
               <div className="text-center">
                 <h3 className="text-white text-lg font-medium mb-1">{client.name}</h3>
-                <p className="text-gray-400 text-sm mb-3">{client.category}</p>
                 
                 <div className="flex items-center justify-center space-x-2 mb-2">
                   <Users className="h-4 w-4 text-white" />
-                  <span className="text-white font-medium">{client.subscribers}</span>
+                  <span className="text-white font-medium">{client.subscribers || 'N/A'}</span>
                 </div>
               
                 <div className="bg-black/50 text-gray-400 px-3 py-1 rounded-full text-xs inline-block">
@@ -124,7 +91,7 @@ const Clients: React.FC = () => {
         </div>
 
         {/* Testimonial Section */}
-        <div className="bg-black border border-white/[0.08] rounded-lg p-8 mt-16">
+        {/* <div className="bg-black border border-white/[0.08] rounded-lg p-8 mt-16">
           <div className="text-center">
             <div className="flex justify-center mb-4">
               {[...Array(5)].map((_, i) => (
@@ -144,7 +111,7 @@ const Clients: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

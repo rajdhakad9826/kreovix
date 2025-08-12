@@ -39,9 +39,6 @@ const Navigation: React.FC = () => {
         <div className="flex justify-between items-center py-5">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="bg-white p-1.5 rounded-md">
-              <Play className="h-5 w-5 text-black fill-black" />
-            </div>
             <span className="text-xl font-semibold text-white">Kreovix</span>
           </div>
 
