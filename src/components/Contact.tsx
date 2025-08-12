@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Youtube, Instagram, Twitter, Linkedin } from 'lucide-react';
+import {
+  FaEnvelope,
+  FaPaperPlane,
+  FaYoutube,
+  FaInstagram,
+  FaLinkedin
+} from 'react-icons/fa';
+
+import { FaXTwitter } from 'react-icons/fa6'; 
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -18,40 +26,38 @@ const Contact: React.FC = () => {
     e.preventDefault();
     // Handle form submission here
     console.log('Form submitted:', formData);
-    alert('Thank you for your message! We\'ll get back to you within 24 hours.');
     setFormData({ name: '', email: '', projectType: '', message: '' });
   };
 
   const projectTypes = [
     'YouTube Video Editing',
     'Instagram Reels',
-    'TikTok Content',
     'Motion Graphics',
     'Corporate Video',
     'Social Media Management',
-    'Custom Project'
+    'Other'
   ];
 
   const contactInfo = [
-    {
-      icon: <Mail className="h-6 w-6" />,
-      label: 'Email Us',
-      value: 'hello@kreovix.com',
-      link: 'mailto:hello@kreovix.com'
-    },
-    {
-      icon: <Instagram className="h-6 w-6" />,
-      label: 'DM Us',
-      value: '@Kreovix_',
-      link: '#'
-    }
-  ];
+  {
+    icon: <FaEnvelope className="h-6 w-6" />,
+    label: 'Email Us',
+    value: 'teamkreovix@gmail.com',
+    link: 'mailto:teamkreovix@gmail.com'
+  },
+  {
+    icon: <FaInstagram className="h-6 w-6" />,
+    label: 'DM Us',
+    value: '@thekreovix',
+    link: '#'
+  }
+];
 
   const socialLinks = [
-    { icon: <Youtube className="h-6 w-6" />, name: 'YouTube', link: '#' },
-    { icon: <Instagram className="h-6 w-6" />, name: 'Instagram', link: '#' },
-    { icon: <Twitter className="h-6 w-6" />, name: 'Twitter', link: '#' },
-    { icon: <Linkedin className="h-6 w-6" />, name: 'LinkedIn', link: '#' }
+    { icon: <FaYoutube className="h-6 w-6" />, name: 'YouTube', link: '#' },
+    { icon: <FaInstagram className="h-6 w-6" />, name: 'Instagram', link: '#' },
+    { icon: <FaXTwitter className="h-6 w-6" />, name: 'Twitter', link: '#' },
+    { icon: <FaLinkedin className="h-6 w-6" />, name: 'LinkedIn', link: '#' }
   ];
   
   return (
@@ -147,7 +153,7 @@ const Contact: React.FC = () => {
                   className="w-full bg-white hover:bg-gray-100 text-black px-6 py-3 rounded-md font-medium transition-colors flex items-center justify-center space-x-2"
                 >
                   <span>Send Message</span>
-                  <Send className="h-5 w-5" />
+                  <FaPaperPlane className="h-5 w-5" />
                 </button>
               </form>
             </div>
