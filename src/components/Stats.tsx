@@ -1,43 +1,25 @@
 import React from 'react';
-import { Eye, Clock, CheckCircle, Users, TrendingUp, Award } from 'lucide-react';
+import { Eye, Clock, CheckCircle } from 'lucide-react';
 
 const Stats: React.FC = () => {
   const stats = [
     {
       icon: <Eye className="h-8 w-8" />,
-      number: '500M+',
+      number: '15M+',
       label: 'Total Views Generated',
       description: 'Across all platforms and projects'
     },
     {
       icon: <Clock className="h-8 w-8" />,
-      number: '10,000+',
+      number: '100+',
       label: 'Hours of Content Edited',
       description: 'Professional editing expertise'
     },
     {
       icon: <CheckCircle className="h-8 w-8" />,
-      number: '2,000+',
+      number: '200+',
       label: 'Projects Completed',
       description: 'Successful deliveries on time'
-    },
-    {
-      icon: <Users className="h-8 w-8" />,
-      number: '500+',
-      label: 'Happy Clients',
-      description: 'Creators and brands worldwide'
-    },
-    {
-      icon: <TrendingUp className="h-8 w-8" />,
-      number: '98%',
-      label: 'Client Retention Rate',
-      description: 'Long-term partnerships'
-    },
-    {
-      icon: <Award className="h-8 w-8" />,
-      number: '4.9/5',
-      label: 'Average Rating',
-      description: 'Consistent quality delivery'
     }
   ];
 
@@ -58,7 +40,7 @@ const Stats: React.FC = () => {
             Our Impact in Numbers
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            These numbers represent our commitment to excellence and the trust our clients place in us.
+            Discover the measurable success we've achieved for our clients through professional video editing.
           </p>
         </div>
 

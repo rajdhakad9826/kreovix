@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Star } from 'lucide-react';
+import { Users } from 'lucide-react';
 
 const Clients: React.FC = () => {
   const clients = [
