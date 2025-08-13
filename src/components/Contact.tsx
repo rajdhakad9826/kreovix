@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import {
   FaEnvelope,
   FaPaperPlane,
@@ -7,7 +8,7 @@ import {
   FaLinkedin
 } from 'react-icons/fa';
 
-import { FaXTwitter } from 'react-icons/fa6'; 
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,9 @@ const Contact: React.FC = () => {
     projectType: '',
     message: ''
   });
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [statusType, setStatusType] = useState<'success' | 'error' | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -24,9 +28,31 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    emailjs.send(
+    import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    formData,
+    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+  )
+  .then((result) => {
+    console.log('Email sent successfully:', result.text);
+    setStatusType('success');
+    setStatusMessage('Your message has been sent successfully!');
     setFormData({ name: '', email: '', projectType: '', message: '' });
+  })
+  .catch((error) => {
+    console.error('Email send error:', error);
+    setStatusType('error');
+    setStatusMessage('Oops! Something went wrong. Please try again later.');
+  })
+  .finally(() => {
+    setIsSubmitting(false); // Stop loading
+    setTimeout(() => {
+      setStatusMessage(null);
+      setStatusType(null);
+    }, 5000);
+  });
   };
 
   const projectTypes = [
@@ -39,19 +65,19 @@ const Contact: React.FC = () => {
   ];
 
   const contactInfo = [
-  {
-    icon: <FaEnvelope className="h-6 w-6" />,
-    label: 'Email Us',
-    value: 'teamkreovix@gmail.com',
-    link: 'mailto:teamkreovix@gmail.com'
-  },
-  {
-    icon: <FaInstagram className="h-6 w-6" />,
-    label: 'DM Us',
-    value: '@thekreovix',
-    link: '#'
-  }
-];
+    {
+      icon: <FaEnvelope className="h-6 w-6" />,
+      label: 'Email Us',
+      value: 'teamkreovix@gmail.com',
+      link: 'mailto:teamkreovix@gmail.com'
+    },
+    {
+      icon: <FaInstagram className="h-6 w-6" />,
+      label: 'DM Us',
+      value: '@thekreovix',
+      link: '#'
+    }
+  ];
 
   const socialLinks = [
     { icon: <FaYoutube className="h-6 w-6" />, name: 'YouTube', link: '#' },
@@ -59,7 +85,7 @@ const Contact: React.FC = () => {
     { icon: <FaXTwitter className="h-6 w-6" />, name: 'Twitter', link: '#' },
     { icon: <FaLinkedin className="h-6 w-6" />, name: 'LinkedIn', link: '#' }
   ];
-  
+
   return (
     <section id="contact" className="py-20 bg-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,7 +103,7 @@ const Contact: React.FC = () => {
           <div className="animate-fade-in-up">
             <div className="bg-black border border-white/[0.08] rounded-lg p-8">
               <h3 className="text-2xl font-semibold text-white mb-6">Send Us a Message</h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -95,7 +121,7 @@ const Contact: React.FC = () => {
                       placeholder="John Doe"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="email" className="block text-white font-medium mb-2 text-sm">
                       Email Address *
@@ -112,7 +138,7 @@ const Contact: React.FC = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label htmlFor="projectType" className="block text-white font-medium mb-2 text-sm">
                     Project Type *
@@ -131,7 +157,7 @@ const Contact: React.FC = () => {
                     ))}
                   </select>
                 </div>
-                
+
                 <div>
                   <label htmlFor="message" className="block text-white font-medium mb-2 text-sm">
                     Project Details *
@@ -147,15 +173,35 @@ const Contact: React.FC = () => {
                     placeholder="Tell us about your project, timeline, and any specific requirements..."
                   />
                 </div>
-                
+
                 <button
                   type="submit"
-                  className="w-full bg-white hover:bg-gray-100 text-black px-6 py-3 rounded-md font-medium transition-colors flex items-center justify-center space-x-2"
+                  disabled={isSubmitting}
+                  className={`w-full px-6 py-3 rounded-md font-medium transition-colors flex items-center justify-center space-x-2 ${isSubmitting
+                      ? 'bg-gray-400 text-white cursor-not-allowed'
+                      : 'bg-white hover:bg-gray-100 text-black'
+                    }`}
                 >
-                  <span>Send Message</span>
-                  <FaPaperPlane className="h-5 w-5" />
+                  {isSubmitting ? (
+                    <span>Sending...</span>
+                  ) : (
+                    <>
+                      <span>Send Message</span>
+                      <FaPaperPlane className="h-5 w-5" />
+                    </>
+                  )}
                 </button>
               </form>
+              {statusMessage && (
+                <div
+                  className={`mt-4 px-4 py-3 rounded-md text-sm ${statusType === 'success'
+                    ? 'bg-green-100 text-green-700'
+                    : 'bg-red-100 text-red-700'
+                    }`}
+                >
+                  {statusMessage}
+                </div>
+              )}
             </div>
           </div>
 
@@ -165,7 +211,7 @@ const Contact: React.FC = () => {
               {/* Contact Details */}
               <div className="bg-black border border-white/[0.08] rounded-lg p-8">
                 <h3 className="text-2xl font-semibold text-white mb-6">Get in Touch</h3>
-                
+
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <a
@@ -188,7 +234,7 @@ const Contact: React.FC = () => {
               {/* Social Media */}
               <div className="bg-black border border-white/[0.08] rounded-lg p-8">
                 <h3 className="text-xl font-semibold text-white mb-6">Follow Us</h3>
-                
+
                 <div className="flex space-x-4">
                   {socialLinks.map((social, index) => (
                     <a
@@ -207,7 +253,7 @@ const Contact: React.FC = () => {
               <div className="bg-black border border-white/[0.08] rounded-lg p-6">
                 <h4 className="text-white font-medium mb-2 text-sm">Quick Response Guarantee</h4>
                 <p className="text-gray-400 text-sm">
-                  We respond to all inquiries within 24 hours. For urgent projects, 
+                  We respond to all inquiries within 24 hours. For urgent projects,
                   DM us directly for immediate assistance.
                 </p>
               </div>
