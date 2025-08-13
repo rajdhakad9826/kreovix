@@ -1,47 +1,48 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const Portfolio: React.FC = () => {
   const longFormVideos = [
-    { embedId: 'H7Mbc6E5guQ' },
-    { embedId: '1DPLO6QQqgg' },
-    { embedId: '4JovNM7HvcM' },
-    { embedId: 'X4ups-SuZSI' },
+    { embedId: "H7Mbc6E5guQ" },
+    { embedId: "1DPLO6QQqgg" },
+    { embedId: "4JovNM7HvcM" },
+    { embedId: "X4ups-SuZSI" },
   ];
 
   const shortFormVideos = [
-    { embedId: 'xZAO_v_3qwM' },
-    { embedId: 'Sp_jCMnkyGo' },
-    { embedId: '9SYGG9cgnb0' },
-    { embedId: 'lCuggeyYFog' },
-    { embedId: 'KXH4yeoL_vw' },
-    { embedId: 'YDqJMZ5fPH0' },
+    { embedId: "xZAO_v_3qwM" },
+    { embedId: "Sp_jCMnkyGo" },
+    { embedId: "9SYGG9cgnb0" },
+    { embedId: "lCuggeyYFog" },
+    { embedId: "KXH4yeoL_vw" },
+    { embedId: "YDqJMZ5fPH0" },
   ];
 
-  const VideoCarousel = ({
-    videos,
-    aspect,
-    maxSlides,
-    uniqueNav,
-  }: {
-    videos: any[];
-    aspect: string;
-    maxSlides: number;
-    uniqueNav: string;
-  }) => (
-    <div className="relative">
-      {/* Swiper Container */}
-      <div className="relative">
+const VideoCarousel = ({
+  videos,
+  aspect,
+  maxSlides,
+  uniqueNav,
+}: {
+  videos: any[];
+  aspect: string;
+  maxSlides: number;
+  uniqueNav: string;
+}) => {
+  return (
+    <div className="relative w-full">
+      {/* Wrapper with padding to make space for arrows */}
+      <div className="relative px-10">
         <Swiper
           modules={[Navigation]}
           navigation={{
             nextEl: `.custom-next-${uniqueNav}`,
             prevEl: `.custom-prev-${uniqueNav}`,
           }}
-          spaceBetween={20}
+          spaceBetween={16}
           slidesPerView={1}
           breakpoints={{
             640: { slidesPerView: 2 },
@@ -51,11 +52,11 @@ const Portfolio: React.FC = () => {
         >
           {videos.map((video, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-black border border-white/[0.08] rounded-lg overflow-hidden hover:border-white/20 transition-all duration-300">
+              <div className="w-full bg-black border border-white/[0.08] rounded-lg overflow-hidden hover:border-white/20 transition-all duration-300">
                 <div className={`relative ${aspect}`}>
                   <iframe
                     src={`https://www.youtube.com/embed/${video.embedId}`}
-                    className="w-full h-full"
+                    className="absolute top-0 left-0 w-full h-full"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
@@ -65,16 +66,20 @@ const Portfolio: React.FC = () => {
           ))}
         </Swiper>
 
-         {/* Left Arrow */}
+        {/* Swipe hint for mobile users */}
+        <div className="text-sm text-gray-400 text-center mt-2 md:hidden">
+          Swipe to see more →
+        </div>
+
+        {/* Arrows (only shown on desktop and up) */}
         <button
-          className={`custom-prev-${uniqueNav} absolute -left-20 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white transition backdrop-blur-sm`}
+          className={`custom-prev-${uniqueNav} m-1 hidden md:flex items-center justify-center absolute -left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition`}
         >
           ‹
         </button>
 
-        {/* Right Arrow */}
         <button
-          className={`custom-next-${uniqueNav} absolute -right-20 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white transition backdrop-blur-sm`}
+          className={`custom-next-${uniqueNav} m-1 hidden md:flex items-center justify-center absolute -right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition`}
         >
           ›
         </button>
@@ -88,22 +93,28 @@ const Portfolio: React.FC = () => {
       </div>
     </div>
   );
+};
 
   return (
     <section id="portfolio" className="py-20 bg-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Our Work</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+            Our Work
+          </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Explore our portfolio of successful projects across different formats and platforms.
+            Explore our portfolio of successful projects across different
+            formats and platforms.
           </p>
         </div>
 
         {/* Long Form Carousel */}
         <div className="mb-20">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-semibold text-white">YouTube Long Form</h3>
+            <h3 className="text-2xl font-semibold text-white">
+              YouTube Long Form
+            </h3>
             <span className="text-gray-400 text-sm">01-60 minute content</span>
           </div>
           <VideoCarousel
@@ -117,7 +128,9 @@ const Portfolio: React.FC = () => {
         {/* Short Form Carousel */}
         <div>
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-semibold text-white">YouTube Shorts</h3>
+            <h3 className="text-2xl font-semibold text-white">
+              YouTube Shorts
+            </h3>
             <span className="text-gray-400 text-sm">15-60 second content</span>
           </div>
           <VideoCarousel
