@@ -80,10 +80,10 @@ const Contact: React.FC = () => {
   ];
 
   const socialLinks = [
-    { icon: <FaYoutube className="h-6 w-6" />, name: 'YouTube', link: '#' },
-    { icon: <FaInstagram className="h-6 w-6" />, name: 'Instagram', link: '#' },
-    { icon: <FaXTwitter className="h-6 w-6" />, name: 'Twitter', link: '#' },
-    { icon: <FaLinkedin className="h-6 w-6" />, name: 'LinkedIn', link: '#' }
+    { icon: <FaYoutube className="h-6 w-6" />, name: 'YouTube', link: 'https://www.youtube.com/@thekreovix' },
+    { icon: <FaInstagram className="h-6 w-6" />, name: 'Instagram', link: 'https://www.instagram.com/thekreovix/' },
+    { icon: <FaXTwitter className="h-6 w-6" />, name: 'Twitter', link: 'https://twitter.com/kreovix' },
+    { icon: <FaLinkedin className="h-6 w-6" />, name: 'LinkedIn', link: 'https://www.linkedin.com/company/kreovix/' }
   ];
 
   return (
@@ -238,6 +238,7 @@ const Contact: React.FC = () => {
                 <div className="flex space-x-4">
                   {socialLinks.map((social, index) => (
                     <a
+                      target='_blank'
                       key={index}
                       href={social.link}
                       className="bg-black/50 hover:bg-white text-gray-400 hover:text-black p-3 rounded-md transition-all duration-300 transform hover:-translate-y-1"
