@@ -87,7 +87,7 @@ const VideoCarousel = ({
 
       {/* View All Button */}
       <div className="text-center mt-6">
-        <button className="px-6 py-2 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition">
+        <button onClick={()=>window.open('https://www.youtube.com/@thekreovix', '_blank')} className="px-6 py-2 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition">
           View All
         </button>
       </div>

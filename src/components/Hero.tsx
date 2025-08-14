@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Play, Star } from 'lucide-react';
+import { Play } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
           </h1>
           
           <p className="text-xl text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto">
-            Professional video editing for YouTube, Instagram, TikTok, and beyond. 
+            Professional video editing for YouTube, Instagram, and beyond. 
             We help creators and brands tell compelling stories that captivate audiences.
           </p>
           

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users } from 'lucide-react';
+import { Users, Star } from 'lucide-react';
 
 const Clients: React.FC = () => {
   const clients = [
@@ -70,7 +70,7 @@ const Clients: React.FC = () => {
             <div key={index} className="bg-black border border-white/[0.08] rounded-lg p-6 hover:border-white/20 transition-all duration-300 transform hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
               {/* Logo */}
               <div className="w-16 h-16 bg-white rounded-md flex items-center justify-center mb-4 mx-auto">
-                <img src={client.logo} alt={client.name} />
+                <img style={{borderRadius: '0.375rem'}} src={client.logo} alt={client.name} />
               </div>
               
               {/* Client Info */}
@@ -91,7 +91,7 @@ const Clients: React.FC = () => {
         </div>
 
         {/* Testimonial Section */}
-        {/* <div className="bg-black border border-white/[0.08] rounded-lg p-8 mt-16">
+        <div className="bg-black border border-white/[0.08] rounded-lg p-8 mt-16">
           <div className="text-center">
             <div className="flex justify-center mb-4">
               {[...Array(5)].map((_, i) => (
@@ -99,19 +99,16 @@ const Clients: React.FC = () => {
               ))}
             </div>
             <blockquote className="text-xl text-white mb-6 max-w-4xl mx-auto leading-relaxed">
-              "Kreovix transformed our content strategy completely. Their editing quality and turnaround time is unmatched. Our channel grew from 100K to 2.5M subscribers in just 18 months!"
+              "Kreovix took my videos to the next level. The edits were smooth, engaging, and exactly how I imagined them, only better. They made my content stand out and saved me hours of work!"
             </blockquote>
             <div className="flex items-center justify-center space-x-4">
-              <div className="w-12 h-12 bg-white rounded-md flex items-center justify-center">
-                <span className="text-black font-bold">TS</span>
-              </div>
               <div>
-                <p className="text-white font-medium">Sarah Johnson</p>
-                <p className="text-gray-400 text-sm">Founder, TechScope</p>
+                <p className="text-white font-medium">Ashok Aggarwal</p>
+                <p className="text-gray-400 text-sm">Content Creator</p>
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </section>
   );
