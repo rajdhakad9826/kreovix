@@ -2,7 +2,7 @@ import React from 'react';
 import { Users, Star } from 'lucide-react';
 import thinkschool from '../assets/thinkschool.jpg';
 import ashokaggarwal from '../assets/ashokaggarwal.jpg';
-import zahabi from '../assets/zahabi.jpg';
+import zahabi from '../assets/Zahabi.jpg';
 import plutoacademy from '../assets/plutoacademy.jpg';
 import unendingeducation from '../assets/unendingeducation.jpg';
 import sfs from '../assets/sfsinnovative.png';
