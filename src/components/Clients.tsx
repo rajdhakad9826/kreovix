@@ -1,5 +1,11 @@
 import React from 'react';
 import { Users, Star } from 'lucide-react';
+import thinkschool from '../assets/thinkschool.jpg';
+import ashokaggarwal from '../assets/ashokaggarwal.jpg';
+import zahabi from '../assets/zahabi.jpg';
+import plutoacademy from '../assets/plutoacademy.jpg';
+import unendingeducation from '../assets/unendingeducation.jpg';
+import sfs from '../assets/sfsinnovative.png';
 
 const Clients: React.FC = () => {
   const clients = [
@@ -7,37 +13,37 @@ const Clients: React.FC = () => {
       name: 'Think School',
       subscribers: '4.68M',
       service: 'Reels',
-      logo: 'src/assets/thinkschool.jpg'
+      logo: thinkschool
     },
     {
       name: 'Ashok Aggarwal',
       subscribers: '436K',
       service: 'Reels',
-      logo: 'src/assets/ashokaggarwal.jpg'
+      logo: ashokaggarwal
     },
     {
       name: 'Zahabi',
       subscribers: null,
       service: 'Explainer Video',
-      logo: 'src/assets/zahabi.jpg'
+      logo: zahabi
     },
     {
       name: 'Unending Education',
       subscribers: '498K',
       service: 'YouTube Video',
-      logo: 'src/assets/unendingeducation.jpg'
+      logo: unendingeducation
     },
     {
       name: 'Pluto Academy',
       subscribers: '162k',
       service: 'Reels',
-      logo: 'src/assets/plutoacademy.jpg'
+      logo: plutoacademy
     },
     {
       name: 'SFS',
       subscribers: null,
       service: 'Design',
-      logo: 'src/assets/sfsinnovative.png'
+      logo: sfs
     },
   ];
 
