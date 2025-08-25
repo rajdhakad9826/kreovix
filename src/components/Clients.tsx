@@ -6,51 +6,40 @@ const Clients: React.FC = () => {
     {
       name: 'Think School',
       subscribers: '4.68M',
-      platform: 'YouTube',
+      service: 'Reels',
       logo: 'src/assets/thinkschool.jpg'
     },
     {
       name: 'Ashok Aggarwal',
       subscribers: '436K',
-      platform: 'Instagram',
+      service: 'Reels',
       logo: 'src/assets/ashokaggarwal.jpg'
     },
     {
       name: 'Zahabi',
       subscribers: null,
-      platform: 'Brand',
+      service: 'Explainer Video',
       logo: 'src/assets/zahabi.jpg'
     },
     {
       name: 'Unending Education',
       subscribers: '498K',
-      platform: 'YouTube',
+      service: 'YouTube Video',
       logo: 'src/assets/unendingeducation.jpg'
     },
+    {
+      name: 'Pluto Academy',
+      subscribers: '162k',
+      service: 'Reels',
+      logo: 'src/assets/plutoacademy.jpg'
+    },
+    {
+      name: 'SFS',
+      subscribers: null,
+      service: 'Design',
+      logo: 'src/assets/sfsinnovative.png'
+    },
   ];
-
-  // const achievements = [
-  //   {
-  //     icon: <Users className="h-6 w-6" />,
-  //     title: '500+ Happy Clients',
-  //     description: 'Trusted by creators worldwide'
-  //   },
-  //   {
-  //     icon: <TrendingUp className="h-6 w-6" />,
-  //     title: '500M+ Total Views',
-  //     description: 'Generated across all projects'
-  //   },
-  //   {
-  //     icon: <Award className="h-6 w-6" />,
-  //     title: '98% Client Retention',
-  //     description: 'Long-term partnerships'
-  //   },
-  //   {
-  //     icon: <Star className="h-6 w-6" />,
-  //     title: '4.9/5 Average Rating',
-  //     description: 'Consistent quality delivery'
-  //   }
-  // ];
 
   return (
     <section id="clients" className="py-20 bg-black">
@@ -60,16 +49,16 @@ const Clients: React.FC = () => {
             Our Clients
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            We're proud to work with some of the most successful content creators and brands across different platforms.
+            Clients We've Worked With
           </p>
         </div>
 
         {/* Client Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {clients.map((client, index) => (
             <div key={index} className="bg-black border border-white/[0.08] rounded-lg p-6 hover:border-white/20 transition-all duration-300 transform hover:-translate-y-1 animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
               {/* Logo */}
-              <div className="w-16 h-16 bg-white rounded-md flex items-center justify-center mb-4 mx-auto">
+              <div className="w-16 h-16 bg-black rounded-md flex items-center justify-center mb-4 mx-auto">
                 <img style={{borderRadius: '0.375rem'}} src={client.logo} alt={client.name} />
               </div>
               
@@ -83,7 +72,7 @@ const Clients: React.FC = () => {
                 </div>
               
                 <div className="bg-black/50 text-gray-400 px-3 py-1 rounded-full text-xs inline-block">
-                  {client.platform}
+                  {client.service}
                 </div>
               </div>
             </div>
